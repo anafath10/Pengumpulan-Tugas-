@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator kurs rupiah Fatimah</title>
+    <style>
+      .box {
+        width: 20%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <fieldset>
+        <legend>Kurs Rupiah - Mata Uang Asing</legend>
+        <table>
+          <tr>
+            <th>Masukkan Nilai</th>
+            <th>Valas</th>
+            <th>Nilai Rupiah</th>
+          </tr>
+          <tr>
+            <td>
+              <input type="text" name="idr" id="idr" onchange="hitungKurs()" />
+            </td>
+            <td>
+              <select id="kurs" name="kurslist" onchange="hitungKurs()">
+                <option value="usd">Dollar US</option>
+                <option value="sgd">Dollar Singapore</option>
+                <option value="myr">Ringgit Malaysia</option>
+                <option value="jpy">Yen Jepang</option>
+                <option value="eur">Euro</option>
+                <option value="sar">Riyal Arab Saudi</option>
+              </select>
+            </td>
+            <td>
+              <input
+                type="text"
+                name="hasil"
+                id="hasil"
+                disabled
+                onchange="hitungKurs()"
+              />
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </div>
+
+    <script>
+      function numberWithDots(x) {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      }
+
+      function hitungKurs() {
+        let idr = document.getElementById("idr").value;
+
+        console.log(idr);
+        let kurs = document.getElementById("kurs").value;
+        switch (kurs) {
+          case "usd":
+            document.getElementById("hasil").value = `Rp ${numberWithDots(
+              parseFloat(idr) * 9915
+            )},-`;
+            break;
+          case "sgd":
+            document.getElementById("hasil").value = `Rp ${numberWithDots(
+              parseFloat(idr) * 13472
+            )},-`;
+            break;
+          case "myr":
+            document.getElementById("hasil").value = `Rp ${numberWithDots(
+              parseFloat(idr) * 874
+            )},-`;
+            break;
+          case "jpy":
+            document.getElementById("hasil").value = `Rp ${numberWithDots(
+              parseFloat(idr) * 120
+            )},-`;
+            break;
+          case "eur":
+            document.getElementById("hasil").value = `Rp ${numberWithDots(
+              parseFloat(idr) * 15888
+            )},-`;
+            break;
+          case "sar":
+            document.getElementById("hasil").value = `Rp ${numberWithDots(
+              parseFloat(idr) * 3592
+            )},-`;
+            break;
+          default:
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
